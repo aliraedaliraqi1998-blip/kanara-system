@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إدارة أوزان الكنارة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>إدارة أوزان الكنارة</h1>
+
+<div class="menu">
+  <button onclick="showSection('add')">➕ إدخال كرتون</button>
+  <button onclick="showSection('sell')">🛒 بيع مجموعة</button>
+  <button onclick="showSection('stock')">📦 المخزن</button>
+</div>
+
+<div id="add" class="section">
+  <h2>إدخال كرتون</h2>
+  <input id="barcodeInput" placeholder="اسكن الباركود">
+  <input id="weightInput" type="number" step="0.01" placeholder="الوزن بالكيلو">
+  <div id="reader" style="width:300px; margin:auto;"></div>
+</div>
+
+<div id="sell" class="section">
+  <h2>بيع مجموعة</h2>
+  <input id="sellBarcode" placeholder="اسكن الباركود للبيع" onkeydown="if(event.key==='Enter') addToSale()">
+  <ul id="saleList"></ul>
+  <h3>مجموع الوزن: <span id="totalWeight">0</span> كغم</h3>
+  <button onclick="finishSale()">حفظ و PDF</button>
+</div>
+
+<div id="stock" class="section">
+  <h2>المخزن</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>الباركود</th>
+        <th>الوزن</th>
+        <th>الحالة</th>
+      </tr>
+    </thead>
+    <tbody id="stockTable"></tbody>
+  </table>
+</div>
+
+<footer>
+تم التصميم بواسطة المهندس علي رائد صافي
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.7/minified/html5-qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
